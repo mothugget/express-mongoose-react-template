@@ -1,8 +1,9 @@
 'use strict';
-const router = require('express').Router();
-const stuff = require('./controllers/stuffController');
+import express from 'express';
+import { getStuff, postStuff } from './controllers/stuffController.js';
+const router = express.Router();
 
-router.get('/stuff', stuff.getStuff);
-router.post('/stuff', stuff.postStuff);
+router.get('/stuff', getStuff);
+router.post('/stuff', postStuff);
 
-module.exports = router;
+export default router;

@@ -1,9 +1,9 @@
 'use strict';
-const stuff = require('../models/stuffModel');
+import Stuff  from '../models/stuffModel.js';
 
-exports.getStuff = (req, res) => {
+const getStuff = async (req, res) => {
     try {
-        const stf = stuff.getAll();
+        const stf = await Stuff.find();
         res.status(200);
         res.send(stf);
     } catch (e) {
@@ -12,9 +12,9 @@ exports.getStuff = (req, res) => {
     }
 };
 
-exports.postStuff = (req, res) => {
+const postStuff = async (req, res) => {
     try {
-        stuff.postOne(req.body);
+        await Stuff.create(req.body);
         res.status(201);
         res.send();
     } catch (e) {
@@ -22,3 +22,6 @@ exports.postStuff = (req, res) => {
         res.sendStatus(500);
     }
 };
+
+export {getStuff,postStuff};
+

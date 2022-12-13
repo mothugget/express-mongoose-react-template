@@ -1,9 +1,9 @@
 'use strict';
 
-const express = require('express');
+import express from 'express';
 const app = express();
 
-const router = require('./router.js');
+import router from './router.js';
 
 const PORT = 3000;
 
@@ -15,4 +15,4 @@ app.use(router);
 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`); 
-});
+}); 
