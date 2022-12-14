@@ -1,15 +1,19 @@
-import React from 'react';
+
 import ReactDOM from 'react-dom/client';
 import { useState, useEffect } from 'react'
+import URL from './config';
+import PostForm from './postForm';
+import DeleteForm from './deleteForm';
 
-const URL = 'http://localhost:3030';
+
+
 
 function App() {
-    const [stuff, setStuff] = useState({})
+    const [stuff, setStuff] = useState([])
     const [error, setError] = useState(null)
- 
 
-    
+
+
 
     useEffect(() => {
         fetch(URL + '/stuff').then((res) => res.json())
@@ -23,14 +27,17 @@ function App() {
             })
     }, []);
     if (error) return <h1>{error}</h1>
-    
+
     return (
         <div>
-            <h1>{stuff.toString()}</h1>
-           
+            <h1>{stuff.length&&stuff[1].stuffcontent}</h1>
+            <PostForm/>
+            <DeleteForm/>
         </div>
     )
 }
+
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
